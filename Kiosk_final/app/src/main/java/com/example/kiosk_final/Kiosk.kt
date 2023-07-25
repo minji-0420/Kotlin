@@ -10,21 +10,32 @@ fun main() {
     inputMyInfo(orderManager)
 }
 
-fun inputInfo(): Int {
-    println("메뉴를 선택 하세요.")
-    println("[ SHAKE SHACK MENU ]")
-    println("[1] Burgers         | 앵거스 비프 통살을 다져 만든 버거")
-    println("[2] Frozen Custard  | 매장에서 신선하게 만드는 아이스크림")
-    println("[3] Drinks          | 매장에서 직접 만드는 음료")
-    println("[4] Beers           | 뉴욕 브루클린 브루어리에서 양조한 맥주")
-    println("[0] 종료             | 프로그램 종료")
+fun inputInfo(type:String): Int {
+    while (true) {
+        try {
+            println("메뉴를 선택 하세요.")
+            println("[ SHAKE SHACK MENU ]")
+            println("[1] Burgers         | 앵거스 비프 통살을 다져 만든 버거")
+            println("[2] Frozen Custard  | 매장에서 신선하게 만드는 아이스크림")
+            println("[3] Drinks          | 매장에서 직접 만드는 음료")
+            println("[4] Beers           | 뉴욕 브루클린 브루어리에서 양조한 맥주")
+            println("[0] 종료             | 프로그램 종료")
 
-    return readLine()?.toIntOrNull() ?: 0
+            val selectNumber = readLine()!!.toIntOrNull()
+            if (selectNumber in 0..4) {
+                return selectNumber ?: 0
+            } else {
+                println("올바른 메뉴 번호를 선택 하세요.")
+            }
+        } catch (e: Exception) {
+            println("올바른 메뉴 번호를 선택 하세요.")
+        }
+    }
 }
 
 fun inputMyInfo(orderManager: OrderManager) {
 
-    when (inputInfo()) {
+    when (inputInfo("selectNumber")) {
 
         1 -> burgerList(orderManager)
         2 -> frozenCustardList(orderManager)
@@ -34,7 +45,6 @@ fun inputMyInfo(orderManager: OrderManager) {
             println("종료합니다.")
             exitProcess(0)
         }
-
         else -> println("올바른 메뉴 번호를 선택 하세요.")
     }
 }
