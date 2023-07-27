@@ -24,7 +24,7 @@ fun burgerList(orderManager: OrderManager) {
 
     println("[ Burgers Menu ]")
     for ((index, burger) in burgerList.withIndex()) {
-        println("[${index + 1}] ${burger.name}|W ${burger.price}|${burger.description}")
+        println("[${index + 1}] ${burger.name}  |  W ${burger.price}  |  ${burger.description}")
     }
     println("[0] 뒤로 가기")
 
@@ -69,7 +69,7 @@ fun frozenCustardList(orderManager: OrderManager) {
 
     println("[ FrozenCustard Menu ]")
     for ((index, frozenCustard) in frozenCustardList.withIndex()) {
-        println("[${index + 1}] ${frozenCustard.name}|W ${frozenCustard.price}|${frozenCustard.description}")
+        println("[${index + 1}] ${frozenCustard.name}  |  W ${frozenCustard.price}  |  ${frozenCustard.description}")
     }
     println("[0] 뒤로 가기")
     while (true) {
@@ -113,7 +113,7 @@ fun drinksList(orderManager: OrderManager) {
 
     println("[ Drinks Menu ]")
     for ((index, drinks) in drinksList.withIndex()) {
-        println("[${index + 1}] ${drinks.name}|W ${drinks.price}|${drinks.description}")
+        println("[${index + 1}] ${drinks.name}  |  W ${drinks.price}  |  ${drinks.description}")
     }
     println("[0] 뒤로 가기")
 
@@ -150,7 +150,7 @@ fun beersList(orderManager: OrderManager) {
 
     println("[ Beers Menu ]")
     for ((index, beers) in beersList.withIndex()) {
-        println("[${index + 1}] ${beers.name}|W ${beers.price}|${beers.description}")
+        println("[${index + 1}] ${beers.name}  |  W ${beers.price}  |  ${beers.description}")
     }
     println("[0] 뒤로 가기")
 
