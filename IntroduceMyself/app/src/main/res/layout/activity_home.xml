@@ -71,16 +71,19 @@
             android:layout_marginBottom="20dp"
             android:text="한마디 : 11월이 오긴 오나요" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_finish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:backgroundTint="@color/beige"
-            android:text="종료" />
+            android:background="@drawable/selector_btn"
+            android:drawableRight="@drawable/imagebtn"
+            android:text="종료"
+            android:textColor="@drawable/txtcolor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
-
-
 
 
 </LinearLayout>

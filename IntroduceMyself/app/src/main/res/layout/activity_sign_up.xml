@@ -89,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="17sp"
+            android:textStyle="bold"
             android:backgroundTint="@color/skyBlue"
             android:text="회원가입" />
 

@@ -6,11 +6,12 @@
     <color name="red">#FF0000</color>
     <color name="yellow">#FFEB3B</color>
     <color name="blue">#2196F3</color>
-    <color name="navy">#00168F</color>
+    <color name="navy">#010C4A</color>
     <color name="pink">#FF1F6B</color>
     <color name="skyBlue">#91C8E4</color>
     <color name="babyPink">#FFD1DA</color>
     <color name="beige">#EAC696</color>
+    <color name="darkBeige">#FF9800</color>
 
 
 </resources>
