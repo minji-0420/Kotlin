@@ -76,10 +76,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_btn"
-            android:drawableRight="@drawable/imagebtn"
+            android:drawableLeft="@drawable/imagebtn"
+            android:drawablePadding="-100dp"
+            android:paddingLeft="50dp"
             android:text="종료"
             android:textColor="@drawable/txtcolor"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
 
