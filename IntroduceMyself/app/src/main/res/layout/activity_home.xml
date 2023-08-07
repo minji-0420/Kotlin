@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginBottom="10dp"
-            android:text="이름 : 김민지" />
+            android:text="@string/home_name" />
 
         <CheckBox
             android:id="@+id/cb_career"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginBottom="10dp"
-            android:text="경력 : 영업기획 + HRD 7년" />
+            android:text="@string/home_career" />
 
         <CheckBox
             android:id="@+id/cb_mbti"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginBottom="10dp"
-            android:text="MBTI : ISTJ" />
+            android:text="@string/home_mbti" />
 
         <CheckBox
             android:id="@+id/cb_introduce"
@@ -69,20 +69,21 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
-            android:text="한마디 : 11월이 오긴 오나요" />
+            android:text="@string/home_introduce" />
 
         <android.widget.Button
             android:id="@+id/btn_finish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_btn"
-            android:drawableLeft="@drawable/imagebtn"
+            android:drawableStart="@drawable/imagebtn"
             android:drawablePadding="-100dp"
-            android:paddingLeft="50dp"
-            android:text="종료"
+            android:paddingStart="50dp"
+            android:text="@string/home_finishbtn"
             android:textColor="@drawable/txtcolor"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
 
 
     </LinearLayout>
