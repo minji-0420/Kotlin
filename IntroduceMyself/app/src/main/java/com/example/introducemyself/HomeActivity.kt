@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
@@ -17,11 +16,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val imageArray = arrayOf(
-            R.drawable.image1,
-            R.drawable.image2,
-            R.drawable.image3,
-            R.drawable.image4,
-            R.drawable.image5
+            R.drawable.home_image1,
+            R.drawable.home_image2,
+            R.drawable.home_image3,
+            R.drawable.home_image4,
+            R.drawable.home_image5
         )
 
         val randomImageResource = imageArray[Random.nextInt(imageArray.size)]

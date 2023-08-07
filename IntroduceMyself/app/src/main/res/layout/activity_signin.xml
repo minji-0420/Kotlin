@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/signin_background"
     android:orientation="vertical"
     android:padding="25dp"
     tools:context=".SignInActivity">
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/image" />
+            app:srcCompat="@drawable/signin_image" />
 
     </LinearLayout>
 
