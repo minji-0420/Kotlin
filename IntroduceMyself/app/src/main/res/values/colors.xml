@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#787878</color>
+    <color name="grey">#5A5555</color>
     <color name="red">#FF0000</color>
     <color name="yellow">#FFEB3B</color>
     <color name="blue">#2196F3</color>
@@ -10,8 +10,8 @@
     <color name="pink">#FF1F6B</color>
     <color name="skyBlue">#91C8E4</color>
     <color name="babyPink">#FFD1DA</color>
-    <color name="beige">#EAC696</color>
-    <color name="darkBeige">#FF9800</color>
+    <color name="beige">#AC7F58</color>
+    <color name="darkBeige">#76BA99</color>
 
 
 </resources>

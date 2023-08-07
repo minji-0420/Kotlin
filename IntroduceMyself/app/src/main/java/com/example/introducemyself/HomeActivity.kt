@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.TextView
 import kotlin.random.Random
 
 class HomeActivity : AppCompatActivity() {
@@ -28,8 +29,8 @@ class HomeActivity : AppCompatActivity() {
         imageHome.setImageResource(randomImageResource)
 
         val id = intent.getStringExtra("idFromSignInActivity")
-        val cbID = findViewById<CheckBox>(R.id.cb_id)
-        cbID.text = "ID : $id"
+        val cbID = findViewById<TextView>(R.id.cb_id)
+        cbID.text = "아이디 : $id"
 
         val btnFinish = findViewById<Button>(R.id.btn_finish)
         btnFinish.setOnClickListener{

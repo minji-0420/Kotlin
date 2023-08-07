@@ -13,5 +13,6 @@
     <string name="home_mbti">MBTI : ISTJ</string>
     <string name="home_introduce">한마디 : 11월이 오긴 오나요</string>
     <string name="home_finishbtn">종료</string>
+    <string name="home_intro">Introduce Myself</string>
 
 </resources>
