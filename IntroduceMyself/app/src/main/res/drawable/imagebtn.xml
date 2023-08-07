@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-    <item android:width="30dp" android:height="50dp" android:background="#00000000" android:drawable="@drawable/love" android:state_pressed="true" />
+    <item android:width="30dp" android:height="30dp" android:background="#00000000" android:drawable="@drawable/love" android:state_pressed="true" />
 
-    <item android:width="30dp" android:height="50dp" android:background="#00000000" android:drawable="@drawable/smile" android:state_pressed="false" />
+    <item android:width="30dp" android:height="30dp" android:background="#00000000" android:drawable="@drawable/smile" android:state_pressed="false" />
 
 
 </selector>
