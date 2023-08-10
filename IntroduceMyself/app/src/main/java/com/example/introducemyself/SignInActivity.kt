@@ -45,11 +45,9 @@ class SignInActivity : AppCompatActivity() {
 
             if (!isExistBlank) {
 
-                val editID = findViewById<EditText>(R.id.editID)
-                val strData = editID.text.toString()
                 val intent = Intent(this, HomeActivity::class.java)
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                intent.putExtra("idFromSignInActivity", strData)
+                intent.putExtra("idFromSignInActivity", id)
                 startActivity(intent)
 
             } else Toast.makeText(this, "아이디 또는 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show()
