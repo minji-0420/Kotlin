@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
 
                 val intent = Intent(this, HomeActivity::class.java)
                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                intent.putExtra("idFromSignInActivity", id)
+                intent.putExtra("idFromSignInActivity", id) // homeactivity로 아이디 전달
                 startActivity(intent)
 
             } else Toast.makeText(this, "아이디 또는 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show()
