@@ -14,7 +14,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.MutableLiveData
 
 class SignInActivity : AppCompatActivity() {
-
+    // 미리 선언하고 초기화를 나중에 해야 할 경우
+    // 초기화 : 가서 값 지정 받아랏
+    // 상단에서 type 선언 했기 때문에 밑에 메소드에서 type 지정해 줄 필요 없음
     lateinit var launcher: ActivityResultLauncher<Intent>
     private lateinit var logInBtn: Button
     private lateinit var signInBtn: Button
@@ -25,10 +27,10 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
 
-        logInBtn = findViewById<Button>(R.id.btn_logIn)
-        signInBtn = findViewById<Button>(R.id.btn_signIn)
-        editID = findViewById<EditText>(R.id.editID)
-        editPW = findViewById<EditText>(R.id.editPW)
+        logInBtn = findViewById(R.id.btn_logIn)
+        signInBtn = findViewById(R.id.btn_signIn)
+        editID = findViewById(R.id.editID)
+        editPW = findViewById(R.id.editPW)
 
         setResultNext()
 
