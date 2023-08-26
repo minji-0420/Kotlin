@@ -1,6 +1,5 @@
 package com.example.applemarket
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarket.databinding.ListItemBinding
@@ -25,9 +24,9 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
     override fun onBindViewHolder(holder: Adapter.CustomViewHolder, position: Int) {
         val item = itemList[position]
         holder.image.setImageResource(item.image)
-        holder.name.text = item.name
+        holder.name.text = item.title
         holder.address.text = item.address
-        holder.price.text = item.price.toString()
+        holder.price.text = item.price
         holder.chatting.setImageResource(item.chatting)
         holder.heart.setImageResource(item.heart)
         holder.reviews.text = item.reviews.toString()
@@ -37,8 +36,6 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
             listener?.onItemClick(item, position)
         }
     }
-
-
 
     override fun getItemCount(): Int {
         return itemList.size
