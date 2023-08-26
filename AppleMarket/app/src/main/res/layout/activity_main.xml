@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/main_down_arrow"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="7dp"
@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/main_down_arrow" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/main_alarm"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
