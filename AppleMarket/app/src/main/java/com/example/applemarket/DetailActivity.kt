@@ -1,9 +1,9 @@
 package com.example.applemarket
 
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.applemarket.databinding.ActivityDetailBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DetailActivity : AppCompatActivity() {
 
@@ -16,8 +16,7 @@ class DetailActivity : AppCompatActivity() {
         // 인텐트로부터 Parcelable 리스트를 가져옴
         val itemList = intent.getParcelableArrayListExtra<ItemList>("itemList") ?: ArrayList()
 
-        // itemList에서 데이터 추출
-        if (itemList != null && itemList.isNotEmpty()) {
+        if (itemList.isNotEmpty()) {
             val data = itemList[0] // 여기서는 첫 번째 아이템만 가져옴
             val image = data.image
             val title = data.title
@@ -26,7 +25,6 @@ class DetailActivity : AppCompatActivity() {
             val detail = data.detail
             val id = data.id
 
-            // 데이터를 뷰에 설정
             binding.detailIv.setImageResource(image)
             binding.detailTvTitle.text = title
             binding.detailTvAddress.text = address
@@ -36,6 +34,19 @@ class DetailActivity : AppCompatActivity() {
         }
         binding.detailIvBack.setOnClickListener {
             finish()
+        }
+        var isHeartFilled: Boolean = false
+        binding.detailIvHeart.setOnClickListener {
+
+            if (isHeartFilled) {
+                binding.detailIvHeart.setImageResource(R.drawable.detail_heart_fill)
+                Snackbar.make(binding.root, "관심 목록에 추가되었습니다.", Snackbar.LENGTH_SHORT).show()
+            } else {
+                binding.detailIvHeart.setImageResource(R.drawable.detail_heart_empty)
+                Snackbar.make(binding.root, "관심 목록에서 제거되었습니다.", Snackbar.LENGTH_SHORT).show()
+            }
+
+            isHeartFilled = !isHeartFilled
         }
     }
 }

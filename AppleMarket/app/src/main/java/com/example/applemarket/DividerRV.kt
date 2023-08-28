@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomItemDecoration(): RecyclerView.ItemDecoration() {
+class DividerRV(): RecyclerView.ItemDecoration() {
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
         val widthMargin = 20f   // 좌우 Margin
@@ -13,7 +13,7 @@ class CustomItemDecoration(): RecyclerView.ItemDecoration() {
 
         val left = parent.paddingLeft.toFloat()
         val right = parent.width - parent.paddingRight.toFloat()
-        val paint = Paint().apply { color = Color.GRAY }
+        val paint = Paint().apply { color = Color.LTGRAY }
         for(i in 0 until parent.childCount) {
             val view = parent.getChildAt(i)
             val top = view.bottom.toFloat() + (view.layoutParams as RecyclerView.LayoutParams).bottomMargin

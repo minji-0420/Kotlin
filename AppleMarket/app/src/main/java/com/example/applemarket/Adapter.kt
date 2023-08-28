@@ -1,6 +1,8 @@
 package com.example.applemarket
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarket.databinding.ListItemBinding
 
@@ -42,6 +44,24 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
     }
 
     inner class CustomViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnLongClickListener {
+                val builder = AlertDialog.Builder(binding.root.context)
+                builder.setTitle("상품 삭제")
+                builder.setIcon(R.drawable.main_chatting)
+                builder.setMessage("상품을 정말로 삭제하시겠습니까?")
+                builder.setPositiveButton("확인", DialogInterface.OnClickListener { _, _ ->
+                    val position = bindingAdapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position)
+                    }
+                })
+                builder.setNegativeButton("취소", DialogInterface.OnClickListener { _, _ ->
+                })
+                builder.show()
+                true
+            }
+        }
         val image = binding.mainIvProduct
         val name = binding.mainTvName
         val address = binding.mainTvAddress
@@ -50,5 +70,11 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
         val heart = binding.mainIvHeart
         val reviews = binding.mainTvReview
         val likes = binding.mainTvHeart
+    }
+    private fun removeItem(position: Int) {
+        if (position in 0 until itemList.size) {
+            itemList.removeAt(position)
+            notifyItemRemoved(position)
+        }
     }
 }
