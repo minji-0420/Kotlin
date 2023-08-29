@@ -1,4 +1,5 @@
 package com.example.applemarket
+
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,14 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarket.databinding.ListItemBinding
 
 
-class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapter.CustomViewHolder>()
-{
-    interface OnItemClickListener{
+class Adapter(val itemList: MutableList<ItemList>) :
+    RecyclerView.Adapter<Adapter.CustomViewHolder>() {
+    interface OnItemClickListener {
         fun onItemClick(data: ItemList, position: Int)
     }
-    private var listener : OnItemClickListener? = null
 
-    fun setOnItemClickListener(listener : OnItemClickListener) {
+    private var listener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 
@@ -24,26 +26,27 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
     }
 
     override fun onBindViewHolder(holder: Adapter.CustomViewHolder, position: Int) {
+
         val item = itemList[position]
         holder.image.setImageResource(item.image)
         holder.name.text = item.title
         holder.address.text = item.address
         holder.price.text = item.price
-        holder.chatting.setImageResource(item.chatting)
-        holder.heart.setImageResource(item.heart)
+        if (item.isHeartFilled) {
+            holder.heart.setImageResource(R.drawable.detail_heart_fill)
+        } else {
+            holder.heart.setImageResource(R.drawable.detail_heart_empty)
+        }
         holder.reviews.text = item.reviews.toString()
         holder.likes.text = item.likes.toString()
 
-        holder.itemView.setOnClickListener {
-            listener?.onItemClick(item, position)
-        }
     }
-
     override fun getItemCount(): Int {
         return itemList.size
     }
 
-    inner class CustomViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CustomViewHolder(val binding: ListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnLongClickListener {
                 val builder = AlertDialog.Builder(binding.root.context)
@@ -61,16 +64,24 @@ class Adapter(val itemList: MutableList<ItemList>) : RecyclerView.Adapter<Adapte
                 builder.show()
                 true
             }
+
+            itemView.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener?.onItemClick(itemList[position], position)
+                }
+            }
         }
+
         val image = binding.mainIvProduct
         val name = binding.mainTvName
         val address = binding.mainTvAddress
         val price = binding.mainTvPrice
-        val chatting = binding.mainIvChatiing
         val heart = binding.mainIvHeart
         val reviews = binding.mainTvReview
         val likes = binding.mainTvHeart
     }
+
     private fun removeItem(position: Int) {
         if (position in 0 until itemList.size) {
             itemList.removeAt(position)

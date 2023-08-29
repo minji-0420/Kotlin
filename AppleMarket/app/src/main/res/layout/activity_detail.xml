@@ -201,7 +201,7 @@
         android:id="@+id/detail_iv_back"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

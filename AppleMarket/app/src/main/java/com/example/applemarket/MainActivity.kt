@@ -10,6 +10,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -20,6 +22,7 @@ import com.example.applemarket.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var launcher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = Adapter(dataList as MutableList<ItemList>)
         recyclerView.apply {
             this.adapter = adapter
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             addItemDecoration(DividerRV())
         }
@@ -45,7 +49,9 @@ class MainActivity : AppCompatActivity() {
                 val dataList = ArrayList<ItemList>()
                 dataList.add(data)
                 intent.putParcelableArrayListExtra("itemList", dataList)
-                startActivity(intent)
+                intent.putExtra("position", position)
+                intent.putExtra("isHeartFilled", data.isHeartFilled)
+                launcher.launch(intent)
             }
         })
 
@@ -65,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             override fun onAnimationEnd(animation: Animation?) {
                 fabScrollToTop.hide()
             }
+
             override fun onAnimationRepeat(animation: Animation?) {}
         })
 
@@ -88,6 +95,23 @@ class MainActivity : AppCompatActivity() {
             fabScrollToTop.startAnimation(fadeOut)
             recyclerView.scrollToPosition(0)
         }
+        launcher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK && result.data != null) {
+                    val isHeartFilled = result.data?.getBooleanExtra("isHeartFilled", false)
+                    val position = result.data?.getIntExtra("position", -1)
+                    if (isHeartFilled == true && position != -1) {
+                        dataList[position!!].isHeartFilled = true
+                        dataList[position].likes ++
+                        adapter.notifyItemChanged(position)
+                    }
+                    if (isHeartFilled == false && position != -1) {
+                        dataList[position!!].isHeartFilled = false
+                        dataList[position].likes --
+                        adapter.notifyItemChanged(position)
+                    }
+                }
+            }
     }
 
     fun notification() {

@@ -1,5 +1,6 @@
 package com.example.applemarket
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.applemarket.databinding.ActivityDetailBinding
@@ -35,8 +36,18 @@ class DetailActivity : AppCompatActivity() {
         binding.detailIvBack.setOnClickListener {
             finish()
         }
-        var isHeartFilled: Boolean = false
+//        var isHeartFilled: Boolean = false
+        var isHeartFilled = intent.getBooleanExtra("isHeartFilled", false)
+        var position = intent.getIntExtra("position", 0)
+
+        if (isHeartFilled) {
+            binding.detailIvHeart.setImageResource(R.drawable.detail_heart_fill)
+        } else {
+            binding.detailIvHeart.setImageResource(R.drawable.detail_heart_empty)
+        }
+
         binding.detailIvHeart.setOnClickListener {
+            isHeartFilled = !isHeartFilled
 
             if (isHeartFilled) {
                 binding.detailIvHeart.setImageResource(R.drawable.detail_heart_fill)
@@ -45,8 +56,10 @@ class DetailActivity : AppCompatActivity() {
                 binding.detailIvHeart.setImageResource(R.drawable.detail_heart_empty)
                 Snackbar.make(binding.root, "관심 목록에서 제거되었습니다.", Snackbar.LENGTH_SHORT).show()
             }
-
-            isHeartFilled = !isHeartFilled
+            val intent = Intent()
+            intent.putExtra("isHeartFilled", isHeartFilled)
+            intent.putExtra("position", position)
+            setResult(RESULT_OK, intent)
         }
     }
 }
