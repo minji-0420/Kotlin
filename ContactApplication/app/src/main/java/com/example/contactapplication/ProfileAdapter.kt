@@ -47,7 +47,6 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
                     holder.name.text = item.name
                     holder.phone.text = item.phone
                     holder.image.setImageResource(item.image)
-                    holder.setIsRecyclable(false)
                     holder.cb.setOnClickListener {
                         item.viewType = Profiles.VIEW_TYPE_RIGHT
 
@@ -63,7 +62,6 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
                     holder.name.text = item.name
                     holder.phone.text = item.phone
                     holder.image.setImageResource(item.image)
-                    holder.setIsRecyclable(false)
                 }
             }
         }
