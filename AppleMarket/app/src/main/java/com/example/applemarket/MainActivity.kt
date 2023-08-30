@@ -105,10 +105,12 @@ class MainActivity : AppCompatActivity() {
                         dataList[position].likes ++
                         adapter.notifyItemChanged(position)
                     }
-                    if (isHeartFilled == false && position != -1) {
-                        dataList[position!!].isHeartFilled = false
-                        dataList[position].likes --
-                        adapter.notifyItemChanged(position)
+                    else {
+                        if (dataList[position!!].isHeartFilled) {
+                            dataList[position!!].isHeartFilled = false
+                            dataList[position].likes--
+                            adapter.notifyItemChanged(position)
+                        }
                     }
                 }
             }
