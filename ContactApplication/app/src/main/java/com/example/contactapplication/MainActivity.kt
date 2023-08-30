@@ -27,20 +27,20 @@ class MainActivity : AppCompatActivity() {
 
         val profileList = arrayListOf(
             Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
-            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 1),
-            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0),
-            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 1),
             Profiles(R.drawable.user2, "이모모", "010-2222-2222", 0),
-            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 1),
-            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
-            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 1),
             Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0),
-            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 1),
+            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
             Profiles(R.drawable.user2, "이모모", "010-2222-2222", 0),
-            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 1),
-            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
-            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 1),
             Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0),
+            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
+            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 0),
+            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0),
+            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
+            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 0),
+            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0),
+            Profiles(R.drawable.user1, "김로로", "010-1111-1111", 0),
+            Profiles(R.drawable.user2, "이모모", "010-2222-2222", 0),
+            Profiles(R.drawable.user3, "박도도", "010-3333-3333", 0)
         )
 
         val adapter = ProfileAdapter(profileList)

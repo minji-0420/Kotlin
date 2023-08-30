@@ -48,6 +48,14 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
                     holder.phone.text = item.phone
                     holder.image.setImageResource(item.image)
                     holder.setIsRecyclable(false)
+                    holder.cb.setOnClickListener {
+                        item.viewType = Profiles.VIEW_TYPE_RIGHT
+
+                        holder.itemView.post {
+                            notifyItemChanged(position)
+
+                        }
+                    }
                 }
             }
             Profiles.VIEW_TYPE_RIGHT -> {
@@ -73,6 +81,7 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
         val image = binding.ivUser
         var name = binding.tvName
         var phone = binding.tvPhoneNumber
+        var cb = binding.listCb
     }
 
     inner class FavoritesHolder(val binding: FavlistItemBinding) :
@@ -82,7 +91,6 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
         var phone = binding.tvPhoneNumber
     }
 }
-
 
 //    override fun onBindViewHolder(holder: Holder, position: Int) {
 //
@@ -95,3 +103,12 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
 //        holder.phone.text = profileList[position].phone
 //
 //    }
+
+//          init {
+//            binding.listCb.setOnClickListener {
+//                profileList[adapterPosition].viewType = Profiles.VIEW_TYPE_RIGHT
+//            }
+//            binding.root.post {
+//                notifyItemChanged(adapterPosition)
+//            }
+//        }
