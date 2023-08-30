@@ -24,10 +24,10 @@
             android:id="@+id/cv"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:elevation="6dp"
-            app:cardCornerRadius="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +35,7 @@
             <ImageView
                 android:id="@+id/main_iv_product"
                 android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/sample1" />
 
         </androidx.cardview.widget.CardView>
@@ -48,9 +48,9 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/cv"
             app:layout_constraintTop_toTopOf="@+id/cv" />
 
