@@ -1,3 +1,0 @@
-com.example.kiosk.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
