@@ -28,6 +28,14 @@ class NewsAdapter(val newsItems: MutableList<NewsItem>) : RecyclerView.Adapter<N
         holder.num.text = item.num.toString()
         holder.title.text = item.title
         holder.detail.text = item.detail
+
+        holder.itemView.setOnClickListener {
+            val position = holder.bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener?.onItemClick(newsItems[position], position)
+            }
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,16 +43,6 @@ class NewsAdapter(val newsItems: MutableList<NewsItem>) : RecyclerView.Adapter<N
     }
 
     inner class Holder(val binding: NewsItemListBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            itemView.setOnClickListener {
-                val position = bindingAdapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    listener?.onItemClick(newsItems[position], position)
-                }
-            }
-        }
-
         val image = binding.rvIvImage
         val num = binding.rvTvNum
         val title = binding.rvTvNewsTitle
