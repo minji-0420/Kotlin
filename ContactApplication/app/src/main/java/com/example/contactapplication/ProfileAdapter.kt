@@ -47,6 +47,7 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
                     holder.name.text = item.name
                     holder.phone.text = item.phone
                     holder.image.setImageResource(item.image)
+                    holder.cb.isChecked = false
                     holder.cb.setOnClickListener {
                         item.viewType = Profiles.VIEW_TYPE_RIGHT
 
@@ -62,6 +63,13 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
                     holder.name.text = item.name
                     holder.phone.text = item.phone
                     holder.image.setImageResource(item.image)
+                    holder.heart.setOnClickListener {
+                        item.viewType = Profiles.VIEW_TYPE_LEFT
+
+                        holder.itemView.post {
+                            notifyItemChanged(position)
+                        }
+                    }
                 }
             }
         }
@@ -82,31 +90,10 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) :
         var cb = binding.listCb
     }
 
-    inner class FavoritesHolder(val binding: FavlistItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class FavoritesHolder(val binding: FavlistItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.ivUser
         var name = binding.tvName
         var phone = binding.tvPhoneNumber
+        var heart = binding.favIvHeart
     }
 }
-
-//    override fun onBindViewHolder(holder: Holder, position: Int) {
-//
-//        holder.itemView.setOnClickListener {
-//            itemClick?.onClick(it, position)
-//        }
-//
-//        holder.image.setImageResource(profileList[position].image)
-//        holder.name.text = profileList[position].name
-//        holder.phone.text = profileList[position].phone
-//
-//    }
-
-//          init {
-//            binding.listCb.setOnClickListener {
-//                profileList[adapterPosition].viewType = Profiles.VIEW_TYPE_RIGHT
-//            }
-//            binding.root.post {
-//                notifyItemChanged(adapterPosition)
-//            }
-//        }
