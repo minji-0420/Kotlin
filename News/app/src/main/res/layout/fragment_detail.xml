@@ -16,8 +16,9 @@
 
             <ImageView
                 android:id="@+id/detail_iv_image"
-                android:layout_width="400dp"
+                android:layout_width="0dp"
                 android:layout_height="300dp"
+                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -25,13 +26,15 @@
 
             <TextView
                 android:id="@+id/detail_tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:text="뉴스 타이틀"
                 android:gravity="center"
                 android:textAlignment="center"
-                android:textSize="25sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,11 +42,12 @@
 
             <TextView
                 android:id="@+id/detail_tv_detail"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
+                android:paddingHorizontal="2dp"
                 android:text="가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

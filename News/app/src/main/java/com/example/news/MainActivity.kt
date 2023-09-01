@@ -25,32 +25,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val date = binding.mainTvDate
         date.text = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
-//        Log.d("tag","onCreate")
+        Log.d("tag","onCreate")
 
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frame, titleFragment)
                 .commit()
-        } else {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, titleFragment)
-                .replace(R.id.detail_frame, detailFragment)
-                .commit()
         }
-    }
-}
-//    override fun onConfigurationChanged(newConfig: Configuration) {
-//        super.onConfigurationChanged(newConfig)
-//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//        } else {
 //            supportFragmentManager.beginTransaction()
 //                .replace(R.id.main_frame, titleFragment)
 //                .replace(R.id.detail_frame, detailFragment)
 //                .commit()
-//        } else {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frame, titleFragment)
-//                .commit()
 //        }
-//    }
-
+    }
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, titleFragment)
+                .replace(R.id.detail_frame, detailFragment)
+                .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, titleFragment)
+                .commit()
+        }
+    }
+}
 //if (savedInstanceState == null)
