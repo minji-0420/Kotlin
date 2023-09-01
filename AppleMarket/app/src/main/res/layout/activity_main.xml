@@ -75,7 +75,7 @@
             android:clickable="true"
             android:focusable="true"
             app:rippleColor="@color/orange2"
-            app:fabSize="mini"
+            app:fabCustomSize="35dp"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator"
             android:layout_margin="16dp"
             android:layout_gravity="bottom|end"
