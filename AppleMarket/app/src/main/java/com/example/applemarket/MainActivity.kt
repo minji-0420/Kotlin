@@ -3,7 +3,6 @@ package com.example.applemarket
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioAttributes
 import android.os.Build
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager =
                 LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
-            addItemDecoration(DividerRV())
+//            addItemDecoration(DividerRV())
         }
         adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
             override fun onItemClick(data: ItemList, position: Int) {
@@ -116,7 +115,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    fun notification() {
+    private fun notification() {
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         val builder: NotificationCompat.Builder
@@ -170,11 +169,8 @@ class MainActivity : AppCompatActivity() {
         builder.setTitle("종료")
         builder.setIcon(R.drawable.main_chatting)
         builder.setMessage("정말 종료하시겠습니까?")
-        builder.setPositiveButton("확인", DialogInterface.OnClickListener { _, _ ->
-            finish()
-        })
-        builder.setNegativeButton("취소", DialogInterface.OnClickListener { _, _ ->
-        })
+        builder.setPositiveButton("확인") { _, _ -> finish() }
+        builder.setNegativeButton("취소") { _, _ -> }
         builder.show()
     }
 }
