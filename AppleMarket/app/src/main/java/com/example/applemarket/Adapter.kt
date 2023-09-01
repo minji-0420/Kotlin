@@ -1,6 +1,5 @@
 package com.example.applemarket
 
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
@@ -53,14 +52,13 @@ class Adapter(val itemList: MutableList<ItemList>) :
                 builder.setTitle("상품 삭제")
                 builder.setIcon(R.drawable.main_chatting)
                 builder.setMessage("상품을 정말로 삭제하시겠습니까?")
-                builder.setPositiveButton("확인", DialogInterface.OnClickListener { _, _ ->
+                builder.setPositiveButton("확인") { _, _ ->
                     val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         removeItem(position)
                     }
-                })
-                builder.setNegativeButton("취소", DialogInterface.OnClickListener { _, _ ->
-                })
+                }
+                builder.setNegativeButton("취소") { _, _ -> }
                 builder.show()
                 true
             }
@@ -72,7 +70,6 @@ class Adapter(val itemList: MutableList<ItemList>) :
                 }
             }
         }
-
         val image = binding.mainIvProduct
         val name = binding.mainTvName
         val address = binding.mainTvAddress
