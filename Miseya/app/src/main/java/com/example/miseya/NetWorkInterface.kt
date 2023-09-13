@@ -3,6 +3,7 @@ package com.example.miseya
 import com.example.miseya.Dust
 import okhttp3.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface NetWorkInterface {
