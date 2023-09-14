@@ -56,7 +56,7 @@
             android:id="@+id/sf_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             tools:listitem="@layout/item_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

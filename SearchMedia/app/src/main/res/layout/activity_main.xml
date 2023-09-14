@@ -47,6 +47,7 @@
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/sub1"
             app:tabIndicatorHeight="5dp"
+            app:tabIconTint="@color/tabselected"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/sub1">
 
