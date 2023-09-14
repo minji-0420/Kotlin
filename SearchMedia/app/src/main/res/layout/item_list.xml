@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/sf_recyclerview"
+    android:background="@color/main"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/rv_iv_main"
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+        android:src="@drawable/examaple"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/rv_iv_heart"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_marginTop="8dp"
+        android:src="@drawable/sf_iv_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_iv_main" />
+
+    <TextView
+        android:id="@+id/rv_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="IMAGE"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/rv_iv_heart"
+        app:layout_constraintTop_toBottomOf="@+id/rv_iv_main" />
+
+    <TextView
+        android:id="@+id/rv_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="2023.09.14.12:00"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/rv_tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tv_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.miseya"
-    compileSdk = 34
+    namespace = "com.example.searchmedia"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.miseya"
+        applicationId = "com.example.searchmedia"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -24,9 +24,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        debug {
-            buildConfigField("boolean", "DEBUG", "true")
         }
     }
     compileOptions {
@@ -45,17 +42,16 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.github.skydoves:powerspinner:1.2.6")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.squareup.retrofit2:converter-scalars:2.5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
