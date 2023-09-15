@@ -22,7 +22,7 @@ data class ImageItem(
     val imageUrl : String,
     val width : Int,
     val height : Int,
-    val displaySiteName : Int,
+    val displaySiteName : String,
     val docUrl : String,
     val dateTime : LocalDateTime
 )
