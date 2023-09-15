@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/sf_recyclerview"
+    android:layout_marginBottom="5dp"
     android:background="@color/main"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/rv_iv_main"
@@ -20,7 +21,7 @@
         android:id="@+id/rv_iv_heart"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/sf_iv_heart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_iv_main" />
@@ -30,9 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:text="IMAGE"
-        android:textSize="25sp"
+        android:fontFamily="@font/font"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/rv_iv_heart"
         app:layout_constraintTop_toBottomOf="@+id/rv_iv_main" />
@@ -41,9 +43,9 @@
         android:id="@+id/rv_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:text="2023.09.14.12:00"
-        android:textSize="17sp"
+        android:fontFamily="@font/font"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/rv_tv_name"
         app:layout_constraintTop_toBottomOf="@+id/rv_tv_name" />
 
