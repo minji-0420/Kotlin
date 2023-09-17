@@ -2,14 +2,23 @@ package com.example.searchmedia.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.searchmedia.R
 import com.example.searchmedia.data.model.ImageItem
-import com.example.searchmedia.data.repository.ImageSearchRepositoryImpl
 import com.example.searchmedia.databinding.ItemListBinding
+import com.example.searchmedia.ui.viewmodel.ImageDeliverViewModel
 
 class ImageSearchViewHolder(
-    private val binding: ItemListBinding
+    private val binding: ItemListBinding,
+    private val imageDeliverViewModel: ImageDeliverViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
+
+    init {
+        binding.rvIvHeart.setOnClickListener {
+            val imageItem = imageDeliverViewModel.bookmarkedItems.value?.get(absoluteAdapterPosition)
+            if (imageItem != null) {
+                imageDeliverViewModel.add(imageItem)
+            }
+        }
+    }
 
     fun bind(imageItem: ImageItem) {
         val imageIv = imageItem.thumbnail_url
@@ -18,7 +27,7 @@ class ImageSearchViewHolder(
 
         itemView.apply {
             binding.rvIvMain.load(imageIv)
-            binding.rvIvHeart.setImageResource(R.drawable.sf_iv_heart)
+            binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
             binding.rvTvName.text = titleTv
             binding.rvTvDate.text = dateTime
         }

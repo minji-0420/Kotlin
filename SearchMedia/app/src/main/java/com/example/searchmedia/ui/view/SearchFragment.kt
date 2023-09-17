@@ -1,6 +1,8 @@
 package com.example.searchmedia.ui.view
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
@@ -8,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.ui.adapter.RVAdapter
 import com.example.searchmedia.databinding.FragmentSearchBinding
+import com.example.searchmedia.ui.viewmodel.ImageDeliverViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
 class SearchFragment : Fragment() {
@@ -23,6 +28,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var rvAdapter: RVAdapter
     private lateinit var imageSearchViewModel: ImageSearchViewModel
+    private lateinit var imageDeliverViewModel: ImageDeliverViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,20 +54,15 @@ class SearchFragment : Fragment() {
             val image: List<ImageItem> = response.mediaDocuments
             rvAdapter.submitList(image)
         }
+
     }
 
     private fun setUpRecyclerView() {
-        rvAdapter = RVAdapter()
+        rvAdapter = RVAdapter(imageDeliverViewModel)
         binding.sfRv.apply {
             setHasFixedSize(true)
             layoutManager =
                 GridLayoutManager(requireContext(), 2)
-//            addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(),
-//                    DividerItemDecoration.VERTICAL
-//                )
-//            )
             adapter = rvAdapter
         }
     }
