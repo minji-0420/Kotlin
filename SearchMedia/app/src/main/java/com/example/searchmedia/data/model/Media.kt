@@ -21,5 +21,6 @@ data class ImageItem(
     val height : Int,
     val display_sitename : String,
     val doc_url : String,
-    val datetime: String
+    val datetime: String,
+    val isHeartFilled: Boolean = false
 )

@@ -8,10 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.ui.adapter.ImageSearchRVAdapter
 import com.example.searchmedia.databinding.FragmentSearchBinding
+import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
 class SearchFragment : Fragment() {
@@ -19,7 +20,8 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvAdapter: ImageSearchRVAdapter
-    private lateinit var imageSearchViewModel: ImageSearchViewModel
+    private val imageSearchViewModel : ImageSearchViewModel by activityViewModels()
+    private val bookmarkViewModel: BookmarkViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,19 +34,16 @@ class SearchFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSearchViewModel = (activity as MainActivity).imageSearchViewModel
 
         setUpRecyclerView()
         searchImage()
 
-        imageSearchViewModel.searchResult.observe(viewLifecycleOwner) { response ->
-            val image: List<ImageItem> = response.mediaDocuments
-            rvAdapter.submitList(image)
+        imageSearchViewModel.searchImageListLiveData.observe(viewLifecycleOwner) {
+            rvAdapter.submitList(it)
         }
-
     }
     private fun setUpRecyclerView() {
-        rvAdapter = ImageSearchRVAdapter()
+        rvAdapter = ImageSearchRVAdapter(imageSearchViewModel, bookmarkViewModel)
         binding.sfRv.apply {
             setHasFixedSize(true)
             layoutManager =
