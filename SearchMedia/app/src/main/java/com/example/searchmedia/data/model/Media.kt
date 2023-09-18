@@ -23,4 +23,8 @@ data class ImageItem(
     val doc_url : String,
     val datetime: String,
     val isHeartFilled: Boolean = false
-)
+) {
+    fun toggleHeartFilled(): ImageItem {
+        return copy(isHeartFilled = !isHeartFilled)
+    }
+}

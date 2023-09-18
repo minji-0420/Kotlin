@@ -23,27 +23,29 @@ class ImageSearchViewHolder(
             19
         ) else "No Date"
 
-        val updatedImageItem = imageItem.copy(isHeartFilled = !imageItem.isHeartFilled)
-
         itemView.apply {
             binding.rvIvMain.load(imageIv)
             binding.rvTvName.text = titleTv
             binding.rvTvDate.text = dateTime
-            if (updatedImageItem.isHeartFilled) {
-                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
-            } else {
+            if (imageItem.isHeartFilled) {
                 binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart_fill)
+            } else {
+                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
             }
         }
+
         binding.rvIvHeart.setOnClickListener {
 
+            bookmarkViewModel.toggleBookmark(imageItem)
+            imageItem.toggleHeartFilled()
+            Log.d("토글", imageItem.isHeartFilled.toString())
+
             if (imageItem.isHeartFilled) {
-                bookmarkViewModel.toggleBookmark(updatedImageItem)
-                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
-            } else {
-                bookmarkViewModel.toggleBookmark(updatedImageItem)
                 binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart_fill)
+            } else {
+                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
             }
         }
+
     }
 }
