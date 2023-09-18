@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.data.model.Media
 import com.example.searchmedia.data.repository.ImageSearchRepository
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,9 @@ class ImageSearchViewModel(
 ) : ViewModel() {
     private val _searchResult = MutableLiveData<Media>()
     val searchResult: LiveData<Media> get() = _searchResult
+
+    private val _bookmarkedItems = MutableLiveData<List<ImageItem>>()
+    val bookmarkedItems: LiveData<List<ImageItem>> get() = _bookmarkedItems
     fun searchImage(query: String) = viewModelScope.launch(Dispatchers.IO) {
         val response = imageSearchRepository.searchImage(query, "accuracy", 1, 80)
         if (response.isSuccessful) {
@@ -23,6 +27,16 @@ class ImageSearchViewModel(
                 _searchResult.postValue(body)
             }
         }
+    }
+    fun addItems(imageItem: ImageItem) = viewModelScope.launch(Dispatchers.IO) {
+        val currentList = _bookmarkedItems.value?.toMutableList() ?: mutableListOf()
+        currentList.add(imageItem)
+        _bookmarkedItems.value = currentList
+    }
+    fun removeItems(imageItem: ImageItem) = viewModelScope.launch(Dispatchers.IO) {
+        val currentList = _bookmarkedItems.value?.toMutableList() ?: mutableListOf()
+        currentList.remove(imageItem)
+        _bookmarkedItems.value = currentList
     }
     var query = String()
         set(value) {

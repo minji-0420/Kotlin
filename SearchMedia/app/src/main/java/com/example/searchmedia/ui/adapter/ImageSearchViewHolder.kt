@@ -4,21 +4,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.databinding.ItemListBinding
-import com.example.searchmedia.ui.viewmodel.ImageDeliverViewModel
 
 class ImageSearchViewHolder(
-    private val binding: ItemListBinding,
-    private val imageDeliverViewModel: ImageDeliverViewModel
+    private val binding: ItemListBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-
-    init {
-        binding.rvIvHeart.setOnClickListener {
-            val imageItem = imageDeliverViewModel.bookmarkedItems.value?.get(absoluteAdapterPosition)
-            if (imageItem != null) {
-                imageDeliverViewModel.add(imageItem)
-            }
-        }
-    }
 
     fun bind(imageItem: ImageItem) {
         val imageIv = imageItem.thumbnail_url
