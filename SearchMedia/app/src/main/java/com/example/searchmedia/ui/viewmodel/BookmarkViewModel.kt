@@ -13,17 +13,15 @@ class BookmarkViewModel : ViewModel() {
     val bookmarkedItems: LiveData<List<ImageItem>> get() = _bookmarkedItems.map { it.toList() }
 
     fun toggleBookmark(imageItem: ImageItem) {
+        Log.d("bookmark", imageItem.toString())
         val currentSet = _bookmarkedItems.value ?: mutableSetOf()
         val imageItemToRemove = currentSet.find { it.image_url == imageItem.image_url }
 
         if (imageItemToRemove != null) {
-            if (imageItemToRemove.isHeartFilled == imageItem.isHeartFilled) {
-                currentSet.remove(imageItem)
-            }
+            currentSet.remove(imageItemToRemove)
         } else {
             currentSet.add(imageItem)
         }
-
         _bookmarkedItems.value = currentSet
     }
 }

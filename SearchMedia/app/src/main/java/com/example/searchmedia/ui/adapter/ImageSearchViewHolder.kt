@@ -36,13 +36,7 @@ class ImageSearchViewHolder(
         binding.rvIvHeart.setOnClickListener {
             val itemChanged = imageItem.toggleHeartFilled()
             bookmarkViewModel.toggleBookmark(itemChanged)
-            onBookmarkChangedListener.onBookmarkChanged(imageItem)
-            if (itemChanged.isHeartFilled) {
-                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart_fill)
-            } else {
-                binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart)
-            }
-
+            imageSearchViewModel.itemBookmarked(imageItem)
         }
     }
 }
