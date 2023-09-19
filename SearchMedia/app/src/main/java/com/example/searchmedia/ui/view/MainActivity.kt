@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private val tabTextList = listOf("Search", "Bookmark")
     private val tabIconList = listOf(R.drawable.vp_iv_search, R.drawable.vp_iv_bookmark)
     lateinit var imageSearchViewModel: ImageSearchViewModel
-    lateinit var bookmarkViewModel: BookmarkViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -36,6 +35,5 @@ class MainActivity : AppCompatActivity() {
         val imageSearchRepository = ImageSearchRepositoryImpl()
         val imageFactory = ImageSearchViewModelProviderFactory(imageSearchRepository, this)
         imageSearchViewModel = ViewModelProvider(this, imageFactory)[ImageSearchViewModel::class.java]
-        bookmarkViewModel = ViewModelProvider(this)[BookmarkViewModel::class.java]
     }
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.searchmedia.ui.adapter.ImageSearchRVAdapter
 import com.example.searchmedia.databinding.FragmentSearchBinding
@@ -20,8 +21,13 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvAdapter: ImageSearchRVAdapter
-    private val imageSearchViewModel : ImageSearchViewModel by activityViewModels()
-    private val bookmarkViewModel: BookmarkViewModel by activityViewModels()
+
+    private val imageSearchViewModel: ImageSearchViewModel by lazy {
+        ViewModelProvider(requireActivity())[ImageSearchViewModel::class.java]
+    }
+    private val bookmarkViewModel: BookmarkViewModel by lazy {
+        ViewModelProvider(requireActivity())[BookmarkViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

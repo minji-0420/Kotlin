@@ -7,20 +7,24 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.databinding.ItemListBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
-import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
-class ImageSearchRVAdapter(private var imageSearchViewModel: ImageSearchViewModel, private var bookmarkViewModel: BookmarkViewModel) :
-    ListAdapter<ImageItem, ImageSearchViewHolder>(ImageDiffCallBack), OnBookmarkChangedListener {
+class BookmarkRVAdapter(private var bookmarkViewModel: BookmarkViewModel) :
+    ListAdapter<ImageItem, BookmarkViewHolder>(ImageDiffCallBack), OnBookmarkChangedListener {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSearchViewHolder {
-        return ImageSearchViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
+        return BookmarkViewHolder(
             ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            imageSearchViewModel,bookmarkViewModel, this)
+            bookmarkViewModel, this)
     }
-
-    override fun onBindViewHolder(holder: ImageSearchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
         val image = getItem(position)
         holder.bind(image)
+    }
+    override fun onBookmarkChanged(imageItem: ImageItem) {
+        val position = currentList.indexOf(imageItem)
+        if (position != -1) {
+            notifyItemChanged(position)
+        }
     }
     companion object {
         private val ImageDiffCallBack = object : DiffUtil.ItemCallback<ImageItem>() {
@@ -33,13 +37,4 @@ class ImageSearchRVAdapter(private var imageSearchViewModel: ImageSearchViewMode
             }
         }
     }
-    override fun onBookmarkChanged(imageItem: ImageItem) {
-        val position = currentList.indexOf(imageItem)
-        if (position != -1) {
-            notifyItemChanged(position)
-        }
-    }
-}
-interface OnBookmarkChangedListener {
-    fun onBookmarkChanged(imageItem: ImageItem)
 }

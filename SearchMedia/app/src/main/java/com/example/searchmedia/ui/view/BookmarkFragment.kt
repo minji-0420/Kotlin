@@ -7,20 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.databinding.FragmentBookmarkBinding
+import com.example.searchmedia.ui.adapter.BookmarkRVAdapter
 import com.example.searchmedia.ui.adapter.ImageSearchRVAdapter
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
 class BookmarkFragment : Fragment() {
-
     private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
-    private lateinit var rvAdapter: ImageSearchRVAdapter
-    private val imageSearchViewModel : ImageSearchViewModel by activityViewModels()
-    private val bookmarkViewModel: BookmarkViewModel by activityViewModels()
+    private lateinit var rvAdapter: BookmarkRVAdapter
+    private val bookmarkViewModel: BookmarkViewModel by lazy {
+        ViewModelProvider(requireActivity())[BookmarkViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +41,7 @@ class BookmarkFragment : Fragment() {
         }
     }
     private fun setUpRecyclerView() {
-        rvAdapter = ImageSearchRVAdapter(imageSearchViewModel,bookmarkViewModel)
+        rvAdapter = BookmarkRVAdapter(bookmarkViewModel)
         binding.sfRv.apply {
             setHasFixedSize(true)
             layoutManager =
