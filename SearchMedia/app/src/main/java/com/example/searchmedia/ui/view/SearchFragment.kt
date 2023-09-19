@@ -1,14 +1,16 @@
 package com.example.searchmedia.ui.view
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.searchmedia.ui.adapter.ImageSearchRVAdapter
@@ -40,13 +42,17 @@ class SearchFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        loadData()
         setUpRecyclerView()
         searchImage()
-
         imageSearchViewModel.searchImageListLiveData.observe(viewLifecycleOwner) {
             rvAdapter.submitList(it)
         }
+    }
+    override fun onPause() {
+        super.onPause()
+        saveData()
+        Log.d("onPause", "호출")
     }
     private fun setUpRecyclerView() {
         rvAdapter = ImageSearchRVAdapter(imageSearchViewModel, bookmarkViewModel)
@@ -77,5 +83,15 @@ class SearchFragment : Fragment() {
             }
             startTime = endTime
         }
+    }
+    private fun saveData() {
+        val pref = requireActivity().getSharedPreferences("pref", 0)
+        val edit = pref.edit()
+        edit.putString("search", binding.etSearch.text.toString())
+        edit.apply()
+    }
+    private fun loadData() {
+        val pref = requireActivity().getSharedPreferences("pref", 0)
+        binding.etSearch.setText(pref.getString("search",""))
     }
 }
