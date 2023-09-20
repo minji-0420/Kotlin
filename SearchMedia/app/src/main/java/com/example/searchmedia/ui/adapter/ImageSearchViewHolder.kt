@@ -1,6 +1,5 @@
 package com.example.searchmedia.ui.adapter
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.searchmedia.data.model.ImageItem
@@ -11,7 +10,7 @@ import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 class ImageSearchViewHolder(
     private val binding: ItemListBinding,
     private val imageSearchViewModel: ImageSearchViewModel,
-    private val bookmarkViewModel: BookmarkViewModel
+    private val bookmarkViewModel: BookmarkViewModel,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(imageItem: ImageItem) {

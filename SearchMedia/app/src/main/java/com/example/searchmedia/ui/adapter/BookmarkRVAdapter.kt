@@ -9,7 +9,10 @@ import com.example.searchmedia.databinding.ItemListBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
-class BookmarkRVAdapter(private var bookmarkViewModel: BookmarkViewModel, private var imageSearchViewModel: ImageSearchViewModel) :
+class BookmarkRVAdapter(
+    private var bookmarkViewModel: BookmarkViewModel,
+    private var imageSearchViewModel: ImageSearchViewModel,
+) :
     ListAdapter<ImageItem, BookmarkViewHolder>(ImageDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
@@ -17,10 +20,12 @@ class BookmarkRVAdapter(private var bookmarkViewModel: BookmarkViewModel, privat
             ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             bookmarkViewModel, imageSearchViewModel)
     }
+
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
         val image = getItem(position)
         holder.bind(image)
     }
+
     companion object {
         private val ImageDiffCallBack = object : DiffUtil.ItemCallback<ImageItem>() {
             override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {

@@ -1,8 +1,6 @@
 package com.example.searchmedia.ui.view
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log

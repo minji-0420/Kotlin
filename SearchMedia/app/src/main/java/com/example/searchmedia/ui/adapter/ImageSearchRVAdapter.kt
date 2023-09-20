@@ -9,19 +9,24 @@ import com.example.searchmedia.databinding.ItemListBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
-class ImageSearchRVAdapter(private var imageSearchViewModel: ImageSearchViewModel, private var bookmarkViewModel: BookmarkViewModel) :
+class ImageSearchRVAdapter(
+    private var imageSearchViewModel: ImageSearchViewModel,
+    private var bookmarkViewModel: BookmarkViewModel
+) :
     ListAdapter<ImageItem, ImageSearchViewHolder>(ImageDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSearchViewHolder {
         return ImageSearchViewHolder(
             ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            imageSearchViewModel,bookmarkViewModel)
+            imageSearchViewModel, bookmarkViewModel
+        )
     }
 
     override fun onBindViewHolder(holder: ImageSearchViewHolder, position: Int) {
         val image = getItem(position)
         holder.bind(image)
     }
+
     companion object {
         private val ImageDiffCallBack = object : DiffUtil.ItemCallback<ImageItem>() {
             override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {

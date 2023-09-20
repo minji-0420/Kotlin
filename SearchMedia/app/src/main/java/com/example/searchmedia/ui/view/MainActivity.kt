@@ -7,7 +7,6 @@ import com.example.searchmedia.R
 import com.example.searchmedia.data.repository.ImageSearchRepositoryImpl
 import com.example.searchmedia.ui.adapter.VPAdapter
 import com.example.searchmedia.databinding.ActivityMainBinding
-import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModelProviderFactory
 import com.google.android.material.tabs.TabLayout
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }.attach()
 
         val imageSearchRepository = ImageSearchRepositoryImpl()
-        val imageFactory = ImageSearchViewModelProviderFactory(imageSearchRepository, this)
+        val imageFactory = ImageSearchViewModelProviderFactory(imageSearchRepository,this)
         imageSearchViewModel = ViewModelProvider(this, imageFactory)[ImageSearchViewModel::class.java]
     }
 }

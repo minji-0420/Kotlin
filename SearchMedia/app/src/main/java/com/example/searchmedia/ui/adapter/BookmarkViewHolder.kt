@@ -1,6 +1,5 @@
 package com.example.searchmedia.ui.adapter
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.searchmedia.data.model.ImageItem

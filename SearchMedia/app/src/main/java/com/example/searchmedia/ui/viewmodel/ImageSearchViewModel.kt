@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.data.model.Media
@@ -16,9 +15,10 @@ import kotlinx.coroutines.launch
 
 class ImageSearchViewModel(
     private val imageSearchRepository: ImageSearchRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _searchResult = MutableLiveData<Media>()
+
 
     val _searchImageLiveData: MutableLiveData<List<ImageItem>> = _searchResult.map { response ->
         (response.mediaDocuments)
