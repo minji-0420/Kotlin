@@ -51,17 +51,14 @@ class ImageSearchViewModel(
             }
         }
     }
-
     var query = String()
         set(value) {
             field = value
             savedStateHandle[SAVE_STATE_KEY] = value
         }
-
     init {
         query = savedStateHandle.get<String>(SAVE_STATE_KEY) ?: ""
     }
-
     companion object {
         private const val SAVE_STATE_KEY = "query"
     }

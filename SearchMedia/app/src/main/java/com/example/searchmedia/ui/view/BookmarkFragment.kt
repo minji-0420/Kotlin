@@ -23,6 +23,9 @@ class BookmarkFragment : Fragment() {
     private val bookmarkViewModel: BookmarkViewModel by lazy {
         ViewModelProvider(requireActivity())[BookmarkViewModel::class.java]
     }
+    private val imageSearchViewModel: ImageSearchViewModel by lazy {
+        ViewModelProvider(requireActivity())[ImageSearchViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +44,7 @@ class BookmarkFragment : Fragment() {
         }
     }
     private fun setUpRecyclerView() {
-        rvAdapter = BookmarkRVAdapter(bookmarkViewModel)
+        rvAdapter = BookmarkRVAdapter(bookmarkViewModel, imageSearchViewModel)
         binding.sfRv.apply {
             setHasFixedSize(true)
             layoutManager =

@@ -34,8 +34,4 @@ object RetrofitInstance {
         .build()
 
     val searchApi: SearchApi = searchRetrofit.create(SearchApi::class.java)
-
-//    val imageMedia = searchApi.searchImage("query", "sort", 1, 0)
-//    val videoMedia = searchApi.searchVideo("query", "sort", 1, 0)
-
 }

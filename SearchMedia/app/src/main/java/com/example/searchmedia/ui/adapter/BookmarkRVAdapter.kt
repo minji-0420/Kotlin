@@ -7,24 +7,19 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.databinding.ItemListBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
+import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
-class BookmarkRVAdapter(private var bookmarkViewModel: BookmarkViewModel) :
-    ListAdapter<ImageItem, BookmarkViewHolder>(ImageDiffCallBack), OnBookmarkChangedListener {
+class BookmarkRVAdapter(private var bookmarkViewModel: BookmarkViewModel, private var imageSearchViewModel: ImageSearchViewModel) :
+    ListAdapter<ImageItem, BookmarkViewHolder>(ImageDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
         return BookmarkViewHolder(
             ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            bookmarkViewModel, this)
+            bookmarkViewModel, imageSearchViewModel)
     }
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
         val image = getItem(position)
         holder.bind(image)
-    }
-    override fun onBookmarkChanged(imageItem: ImageItem) {
-        val position = currentList.indexOf(imageItem)
-        if (position != -1) {
-            notifyItemChanged(position)
-        }
     }
     companion object {
         private val ImageDiffCallBack = object : DiffUtil.ItemCallback<ImageItem>() {

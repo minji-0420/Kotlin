@@ -6,11 +6,12 @@ import coil.load
 import com.example.searchmedia.data.model.ImageItem
 import com.example.searchmedia.databinding.ItemListBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
+import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
 class BookmarkViewHolder(
     private val binding: ItemListBinding,
     private val bookmarkViewModel: BookmarkViewModel,
-    private val onBookmarkChangedListener: OnBookmarkChangedListener
+    private val imageSearchViewModel: ImageSearchViewModel,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(imageItem: ImageItem) {
@@ -28,8 +29,9 @@ class BookmarkViewHolder(
             binding.rvIvHeart.setImageResource(com.example.searchmedia.R.drawable.sf_iv_heart_fill)
         }
         binding.rvIvHeart.setOnClickListener {
-            bookmarkViewModel.toggleBookmark(imageItem)
-            onBookmarkChangedListener.onBookmarkChanged(imageItem)
+            val itemChanged = imageItem.toggleHeartFilled()
+            bookmarkViewModel.toggleBookmark(itemChanged)
+            imageSearchViewModel.itemBookmarked(imageItem)
         }
     }
 }

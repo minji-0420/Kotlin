@@ -11,8 +11,7 @@ import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 class ImageSearchViewHolder(
     private val binding: ItemListBinding,
     private val imageSearchViewModel: ImageSearchViewModel,
-    private val bookmarkViewModel: BookmarkViewModel,
-    private val onBookmarkChangedListener: OnBookmarkChangedListener
+    private val bookmarkViewModel: BookmarkViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(imageItem: ImageItem) {

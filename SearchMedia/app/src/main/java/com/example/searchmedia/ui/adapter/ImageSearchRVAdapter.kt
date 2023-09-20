@@ -10,12 +10,12 @@ import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
 import com.example.searchmedia.ui.viewmodel.ImageSearchViewModel
 
 class ImageSearchRVAdapter(private var imageSearchViewModel: ImageSearchViewModel, private var bookmarkViewModel: BookmarkViewModel) :
-    ListAdapter<ImageItem, ImageSearchViewHolder>(ImageDiffCallBack), OnBookmarkChangedListener {
+    ListAdapter<ImageItem, ImageSearchViewHolder>(ImageDiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSearchViewHolder {
         return ImageSearchViewHolder(
             ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            imageSearchViewModel,bookmarkViewModel, this)
+            imageSearchViewModel,bookmarkViewModel)
     }
 
     override fun onBindViewHolder(holder: ImageSearchViewHolder, position: Int) {
@@ -33,13 +33,4 @@ class ImageSearchRVAdapter(private var imageSearchViewModel: ImageSearchViewMode
             }
         }
     }
-    override fun onBookmarkChanged(imageItem: ImageItem) {
-        val position = currentList.indexOf(imageItem)
-        if (position != -1) {
-            notifyItemChanged(position)
-        }
-    }
-}
-interface OnBookmarkChangedListener {
-    fun onBookmarkChanged(imageItem: ImageItem)
 }
