@@ -36,7 +36,7 @@ class BookmarkFragment : Fragment() {
         setUpRecyclerView()
 
         bookmarkViewModel.bookmarkedItems.observe(viewLifecycleOwner) {
-            rvAdapter.submitList(it)
+            rvAdapter.submitList(it.toMutableList()) // 주소값 새로 생성(복사본)
         }
     }
     private fun setUpRecyclerView() {

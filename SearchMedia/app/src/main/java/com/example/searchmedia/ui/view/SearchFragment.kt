@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.searchmedia.ui.adapter.ImageSearchRVAdapter
 import com.example.searchmedia.databinding.FragmentSearchBinding
 import com.example.searchmedia.ui.viewmodel.BookmarkViewModel
